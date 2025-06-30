@@ -5,41 +5,34 @@
         <tr>
           <th>S.No</th>
           <th>
-            Job Id
-            <input type="text" placeholder="Search" class="header-search" />
-          </th>
-          <th>
             Project Name
             <input type="text" placeholder="Search" class="header-search" />
           </th>
           <th>
-            Client Name
+            Status
             <select class="header-select">
               <option value="">Select</option>
             </select>
           </th>
           <th>
-            Business Category
+          Customer
             <select class="header-select">
               <option value="">Select</option>
             </select>
           </th>
           <th>
-            Country
+            Sales Order
             <select class="header-select">
               <option value="">Select</option>
             </select>
           </th>
           <th>
-            State
+            Quotation
             <select class="header-select">
               <option value="">Select</option>
             </select>
           </th>
-          <th>
-            City
-            <input type="text" placeholder="Search" class="header-search" />
-          </th>
+         
           <th></th> </tr>
       </thead>
       <tbody>
@@ -53,11 +46,12 @@
           <td>{{ project.clientName }}</td>
           <td>{{ project.businessCategory }}</td>
           <td>{{ project.country }}</td>
-          <td>{{ project.state }}</td>
-          <td>{{ project.city }}</td>
+         
           <td>
-            <button class="action-button">⋮</button>
+            <button class="action-button">✏️</button>
+            <button class="action-button">🗑️</button>
           </td>
+         
         </tr>
       </tbody>
     </table>
@@ -78,7 +72,7 @@ export default {
 
 <style scoped>
 .project-table-container {
-  margin: 0 20px 20px 20px; 
+  margin: 20px 20px 20px 20px; 
   overflow-x: auto; 
   background-color: #ffffff;
   border: 1px solid #e0e0e0;

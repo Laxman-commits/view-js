@@ -1,83 +1,143 @@
 <template>
-  <div class="sidebar">
-    <div class="logo">L</div>
+  <div class="sidebar" @mouseover="isHovered = true" @mouseleave="isHovered = false">
+    <div class="sidebar-top">
+      <a href="#" class="menu-item top-items">
+        <img class="icon logo-icon-top" src="@/assets/logo.jpg" alt="Logo" />
+        <span class="label label-span" v-show="isHovered">
+          <img class="icon logo-icon--side" src="@/assets/multark.png" alt="Logo" />
+        </span>
+      </a>
+    </div>
+
     <nav class="menu">
-      <ul>
-        <li class="menu-item active"><a href="#">📊</a></li> <li class="menu-item"><a href="#">📈</a></li> <li class="menu-item"><a href="#">🔍</a></li> <li class="menu-item"><a href="#">🗂️</a></li> <li class="menu-item"><a href="#">📄</a></li> <li class="menu-item"><a href="#">📦</a></li> <li class="menu-item"><a href="#">👥</a></li> <li class="menu-item"><a href="#">⚙️</a></li> </ul>
+      <a href="#" class="menu-item">
+        <span class="icon">📊</span>
+        <span class="label text-head" v-show="isHovered">Project</span>
+      </a>
     </nav>
+
     <div class="sidebar-bottom">
-      <a href="#" class="menu-item">❓</a> <a href="#" class="menu-item user-avatar-small">L</a> </div>
+      <a href="#" class="menu-item">
+        <span class="icon">❓</span>
+        <span class="label" v-show="isHovered">Help</span>
+      </a>
+      <a href="#" class="menu-item user-avatar-small">M</a>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'AppSidebar',
+  data() {
+    return {
+      isHovered: false,
+      activeItem: 'dashboard',
+    };
+  },
 };
 </script>
 
 <style scoped>
+/* ==== Layout Core ==== */
 .sidebar {
-  width: 70px;
-  background-color: #ffffff; 
-  color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 60px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-  border-right: 1px solid #e0e0e0;
+  align-items: flex-start;
+  color: #333;
+  transition: width 0.2s ease;
 }
 
-.logo {
-  font-size: 28px;
-  font-weight: bold;
-  color: #dc3545; 
-  margin-bottom: 30px;
+.sidebar:hover {
+  width: 220px;
 }
 
-.menu ul {
-  list-style: none;
-  padding: 0;
+.sidebar-top {
   width: 100%;
-  text-align: center;
 }
-
-.menu-item {
-  margin-bottom: 25px;
-}
-
-.menu-item a {
-  color: #6c757d; /* Grey icons */
-  text-decoration: none;
-  font-size: 24px; /* Icon size */
-  display: block;
-  padding: 8px 0;
-}
-
-.menu-item.active a,
-.menu-item a:hover {
-  color: #dc3545; /* Red for active/hover */
-}
-
-.menu-item.active {
-   background-color: #ffebee; /* Light red background for active item */
-   border-left: 3px solid #dc3545;
-}
-.menu-item.active a {
-   margin-left: -3px; /* Adjust for border */
-}
-
 
 .sidebar-bottom {
   margin-top: auto;
-  padding-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 20px;
+  width: 100%;
 }
 
+/* ==== Menu Items ==== */
+.menu {
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 7px;
+  color: #6c757d;
+  font-size: 15px;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.menu-item * {
+  text-decoration: none !important;
+}
+
+.menu-item.active,
+.menu-item:hover {
+  background-color: #ffebee;
+  color: #dc3545;
+}
+
+.menu-item .icon {
+  font-size: 20px;
+}
+
+.menu-item .label {
+  white-space: nowrap;
+}
+
+/* ==== Logo Section ==== */
+.top-items {
+  display: flex;
+  align-items: baseline;
+}
+
+.logo-icon-top {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-icon--side {
+  width: 159px;
+  position: relative;
+  top: -10px;
+}
+
+/* ==== Label Styling ==== */
+.label-span {
+  overflow: hidden;
+  height: 60px;
+}
+
+.text-head {
+  font-weight: 600;
+  font-size: larger;
+  padding-left: 8%;
+  border: none;
+}
+
+/* ==== Avatar ==== */
 .user-avatar-small {
-  background-color: #6f42c1; /* Purple avatar */
+  background-color: #6f42c1;
   color: white;
   border-radius: 50%;
   width: 30px;

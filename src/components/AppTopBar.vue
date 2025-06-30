@@ -50,7 +50,7 @@ export default {
   right: -8px;
   background-color: #dc3545;
   color: white;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   padding: 2px 5px;
   font-size: 10px;
   font-weight: bold;

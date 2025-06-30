@@ -1,86 +1,3 @@
-<!-- <template>
-  <div id="app-container">
-    <AppSidebar /> 
-    <div class="main-content">
-      <AppTopBar /> 
-      <ProjectHeader />
-      <ProjectTable :projects="projects" />
-    </div>
-  </div>
-</template>
-
-<script>
-import AppSidebar from './components/AppSidebar.vue'; 
-import AppTopBar from './components/AppTopBar.vue';   
-import ProjectHeader from './components/ProjectHeader.vue';
-import ProjectTable from './components/ProjectTable.vue';
-
-export default {
-  name: 'App',
-  components: {
-    AppSidebar,    
-    AppTopBar,     
-    ProjectHeader,
-    ProjectTable,
-  },
-  data() {
-    return {
-      projects: [
-        {
-          id: '001',
-          name: 'Lucky',
-          clientName: 'Building Construction',
-          businessCategory: 'Online',
-          country: 'India',
-          state: 'Maharashtra',
-          city: 'Airoli',
-        },
-        {
-          id: '002',
-          name: 'Riya',
-          clientName: 'Ronit Gupta',
-          businessCategory: 'Online',
-          country: 'India',
-          state: 'Kerala',
-          city: 'asdfg',
-        },
-        {
-          id: 'RDASH31288',
-          name: 'jogeshwar',
-          clientName: 'Motorola',
-          businessCategory: 'Online',
-          country: 'India',
-          state: 'Maharashtra',
-          city: 'Thane',
-        }
-      ],
-    };
-  },
-};
-</script>
-
-<style>
-#app-container {
-  display: flex;
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa; 
-  min-height: 100vh;
-}
-
-.main-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-body, h1, h2, h3, p, ul, li, table, th, td {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-</style>
- -->
-
 <template>
   <div id="app-container">
     <AppSidebar />
@@ -89,11 +6,6 @@ body, h1, h2, h3, p, ul, li, table, th, td {
       <ProjectHeader @request-open-add-project-modal="openModal" />
       <ProjectTable :projects="projects" />
     </div>
-
-    <!-- Ensure you have a component named CreateProjectFormModal.vue (or similar)
-         that contains the actual form fields and emits 'close' and 'submit-project' events.
-         For demonstration, I'm using the structure of the first modal we created.
-    -->
     <CreateProjectFormModal v-if="isModalVisible" @close="closeModal" @submit-project="addNewProject" />
   </div>
 </template>
@@ -104,19 +16,15 @@ import AppSidebar from './components/AppSidebar.vue';
 import AppTopBar from './components/AppTopBar.vue';
 import ProjectHeader from './components/ProjectHeader.vue';
 import ProjectTable from './components/ProjectTable.vue';
-// Assuming your form modal is named CreateProjectFormModal.vue
-// If you reverted CreateProjectModal.vue to be the form, use that name.
-import CreateProjectFormModal from './components/CreateProjectModal.vue'; // Adjust path if needed
-// C:\Users\HP\Desktop\VIEW-JS\FIRST\rdash\src\components\CreateProjectModal.vue
-// Reactive state for modal visibility
+
+import CreateProjectFormModal from './components/CreateProjectModal.vue'; 
 const isModalVisible = ref(false);
 
-// Initial projects data
 const projects = ref([
   {
     id: '001',
-    sNo: 1, // Added for consistency if ProjectTable expects it
-    jobId: 'JOB001', // Added for consistency
+    sNo: 1, 
+    jobId: 'JOB001', 
     name: 'Lucky',
     clientName: 'Building Construction',
     businessCategory: 'Online',
@@ -133,12 +41,12 @@ const projects = ref([
     businessCategory: 'Online',
     country: 'India',
     state: 'Kerala',
-    city: 'asdfg', // Consider more realistic city names
+    city: 'asdfg', 
   },
   {
     id: 'RDASH31288',
     sNo: 3,
-    jobId: 'RDASH31288', // Assuming jobId can be same as id
+    jobId: 'RDASH31288', 
     name: 'jogeshwar',
     clientName: 'Motorola',
     businessCategory: 'Online',
@@ -148,36 +56,32 @@ const projects = ref([
   }
 ]);
 
-// Function to open the modal
 const openModal = () => {
   isModalVisible.value = true;
   console.log('App.vue: Modal should open.');
 };
 
-// Function to close the modal
 const closeModal = () => {
   isModalVisible.value = false;
   console.log('App.vue: Modal should close.');
 };
 
-// Function to add a new project
 const addNewProject = (newProjectData) => {
   console.log('App.vue: New project data received:', newProjectData);
-  const newId = `PROJ${Date.now()}`; // Simple unique ID generation
+  const newId = `PROJ${Date.now()}`; 
   const newSNo = projects.value.length + 1;
   projects.value.push({
     id: newId,
     sNo: newSNo,
-    jobId: newProjectData.jobId || `JOB${newSNo}`, // Use provided jobId or generate one
+    jobId: newProjectData.jobId || `JOB${newSNo}`,
     name: newProjectData.name,
-    clientName: newProjectData.clientName, // Ensure your modal emits this
+    clientName: newProjectData.clientName,
     businessCategory: newProjectData.businessCategory,
     country: newProjectData.country,
     state: newProjectData.state,
-    city: newProjectData.city, // Ensure your modal emits this
-    // Add other fields as needed
+    city: newProjectData.city, 
   });
-  closeModal(); // Close the modal after adding the project
+  closeModal(); 
 };
 
 </script>
@@ -192,14 +96,12 @@ const addNewProject = (newProjectData) => {
 }
 
 .main-content {
+  margin-left: 62px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  /* Add some padding to the main content area if needed */
-  /* padding: 20px; */
 }
 
-/* Global reset (keep this minimal if you have component-specific styles) */
 body,
 h1,
 h2,
@@ -215,10 +117,9 @@ td {
   box-sizing: border-box;
 }
 
-/* Consider adding a base font size to body for better rem unit calculations */
 body {
   font-size: 16px;
   line-height: 1.5;
   color: #333;
 }
-</style>
+</style> 
